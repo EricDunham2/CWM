@@ -1,13 +1,14 @@
 
 #include "FS.h"
-#include <ESPAsyncTCP.h>
-#include <ESP8266WiFi.h>
+#include <ESPAsyncTCP.h> //ESPAsyncWebServer-esphome by Arduino
+#include <WiFi.h>
 #include "ESPAsyncWebServer.h"
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include "wifi.h"
 #include "eepromHelper.h"
 #include <AsyncElegantOTA.h>
+#include <WiFiManager.h> //WiFiManager by Tzapu
 
 #include "logger.h"
 
@@ -132,6 +133,18 @@ uint16_t setCoilSettings(String windingSettingsStr) {
 void setup()
 {
   Serial.begin(9600);
+
+  /*WiFiManager wm;
+  bool res;
+
+  res = wm.autoConnect("AutoConnectAP", "password");
+
+  if (!res) {
+    logger.logln("Failed to connect");
+  } else {
+    logger.logln("Connected");
+  }*/
+
 
   EEPROMHelper::begin(2048);
 
